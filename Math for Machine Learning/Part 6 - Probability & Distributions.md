@@ -1,15 +1,15 @@
 ![[Pasted image 20250910153316.png]]
 # 6.1 Construction of a Probability Space
 ## 6.1.1 Probabilitas dan Peubah Acak
-Sebuah **ruang probabilitas** (_probability space_) adalah tripel ($\Omega, \mathcal{A}, P$), dengan:
-1. **Sample space** $\Omega$: himpunan semua kemungkinan hasil dari suatu percobaan acak.
+Sebuah ruang probabilitas (_probability space_) adalah tripel ($\Omega, \mathcal{A}, P$), dengan:
+1. Sample space $\Omega$: himpunan semua kemungkinan hasil dari suatu percobaan acak.
     - Contoh: pada pelemparan koin, $\Omega = \{\text{Head}, \text{Tail}\}$.
-2. **Event space ($\mathcal{A}$)**  
+2. Event space ($\mathcal{A}$)  
     Disebut juga _ruang kejadian_. Sebuah subset $A \subseteq \Omega$ dikatakan elemen dari $\mathcal{A}$ apabila setelah percobaan dilakukan, kita dapat _mengamati_ apakah hasil $\omega \in \Omega$ tersebut termasuk ke dalam $A$ atau tidak.
     Dengan kata lain: suatu subset masuk ke event space hanya jika ia teramati/terdefinisi secara jelas dalam eksperimen.
-    - Untuk distribusi diskret, $\mathcal{A}$ seringkali diambil sebagai **power set** dari $\Omega$, yaitu semua subset yang mungkin.
+    - Untuk distribusi diskret, $\mathcal{A}$ seringkali diambil sebagai power set dari $\Omega$, yaitu semua subset yang mungkin.
     - Untuk distribusi kontinu, $\mathcal{A}$ biasanya berupa himpunan Borel, karena tidak semua subset dari $\mathbb{R}$ bisa dijadikan event yang “terukur”.
-3. **Probability measure (PP)**  
+3. Probability measure (PP)  
     Adalah fungsi yang memberikan probabilitas pada setiap event $A \in \mathcal{A}$, dengan sifat:
     - $P(A) \in [0,1]$ untuk semua $A \in \mathcal{A}$,
     - $P(\Omega) = 1$,
@@ -19,9 +19,9 @@ $$
 $$
 
 > [!NOTE] Contoh 1: Permainan Funfair dengan Koin
-> **Eksperimen:**
+> Eksperimen:
 > - Kita punya sebuah kantong berisi koin USA ($) dan koin UK (£).
-> - Kita melakukan dua kali pengambilan koin **dengan pengembalian** (_with replacement_).
+> - Kita melakukan dua kali pengambilan koin dengan pengembalian (_with replacement_).
 > - Probabilitas mengambil koin USA ($) dalam satu kali undian adalah $0.3$.
 > - Probabilitas mengambil koin UK ($£$) adalah $0.7$.
 > $$Ω={($,$),($,£),(£,$),(£,£)}$$
@@ -46,17 +46,17 @@ P(x=0) & =P((£,£)) \\
 
 ---
 # 6.2 Discrete and Continuous Probabilities
-Jika _target space_ $T$ bersifat **diskret** (misalnya $\{0,1\}$, $\{1,2,3,4,5,6\}$), maka yang kita tanyakan adalah probabilitas bahwa variabel acak $X$ sama dengan suatu nilai tertentu:
+Jika _target space_ $T$ bersifat diskret (misalnya $\{0,1\}$, $\{1,2,3,4,5,6\}$), maka yang kita tanyakan adalah probabilitas bahwa variabel acak $X$ sama dengan suatu nilai tertentu:
 $$
 P(X = x), \quad x \in T
 $$
-Fungsi $p(x) = P(X = x)$ ini disebut **probability mass function (pmf)**.
+Fungsi $p(x) = P(X = x)$ ini disebut probability mass function (pmf).
 
-Jika _target space_ $T$ bersifat **kontinu** (misalnya $\mathbb{R}$), maka lebih alami berbicara tentang probabilitas bahwa $X$ jatuh dalam suatu interval:
+Jika _target space_ $T$ bersifat kontinu (misalnya $\mathbb{R}$), maka lebih alami berbicara tentang probabilitas bahwa $X$ jatuh dalam suatu interval:
 $$
 P(a \leq X \leq b), \quad a < b
 $$
-Untuk memudahkan, konvensi yang umum dipakai adalah mendefinisikan **cumulative distribution function (cdf)**:
+Untuk memudahkan, konvensi yang umum dipakai adalah mendefinisikan cumulative distribution function (cdf):
 $$
 F(x) = P(X \leq x)
 $$
@@ -66,7 +66,7 @@ $$
 > Untuk variabel acak $X=\text{hasil lemparan dadu}$, dan $T=\{1,2,3,4,5,6\}$, maka:$$
 p(x)=\frac{1}{6},\quad \forall x \in T$$
 
-Dalam kasus multivariat, jika kita punya beberapa variabel acak diskret misal $\left( X_{1},X_{2},\dots,X_{n} \right)$, maka distribusi gabungan didefinisikan sebagai **joint pmf**:
+Dalam kasus multivariat, jika kita punya beberapa variabel acak diskret misal $\left( X_{1},X_{2},\dots,X_{n} \right)$, maka distribusi gabungan didefinisikan sebagai joint pmf:
 $$
 p(x_{1},x_{2},\dots,x_{n})=P(X_{1}=x_{1},X_{2}=x_{2},\dots,X_{n}=x_{n})
 $$
@@ -84,12 +84,12 @@ $$
 > 2. integralnya ada dan $$
 \int_{\mathbb{R}^D}f(x)dx=1$$
 
-**Intuisi:** Dalam kasus diskret, integral digantikan dengan sum.
+Intuisi: Dalam kasus diskret, integral digantikan dengan sum.
 Peluang suatu variabel acak kontinu $X$  berada di interval $[a,b]$ diberikan oleh:
 $$
 \int_{a}^b f(x) dx
 $$
-yang artinya adalah luas daerah di bawah kurva di antara $a$ dan $b$. **Akibatnya**, untuk kasus kontinu nilai peluang di suatu titik $P(X=x)=0$ karena mengambil $a=b$.
+yang artinya adalah luas daerah di bawah kurva di antara $a$ dan $b$. Akibatnya, untuk kasus kontinu nilai peluang di suatu titik $P(X=x)=0$ karena mengambil $a=b$.
 
 > [!NOTE] Cumulative Distribution Function (CDF)
 > fungsi *cdf* dari suatu variabel acak multivariat $X$ dengan $x \in \mathbb{R}^D$ diberikan sebagai: $$
@@ -99,7 +99,7 @@ F_{X}(x)=\int_{-\infty}^{x_{1}} \dots \int_{-\infty}^{x_{D} }f(z_{1},\dots,z_{D}
 
 Yang artinya adalah total area di bawah kurva dari $-\infty$ ke $x$.
 # 6.3 Sum Rule, Product Rule, and Bayes’ Theorem
-***Sum rule***: Jika kita punya dua variabel acak $Y$ dan $Y$, maka **probabilitas marjinal** dari $X$ bisa diperoleh dengan menjumlahkan (untuk diskrit) atau mengintegralkan (untuk kontinu) probabilitas gabungan
+*Sum rule*: Jika kita punya dua variabel acak $Y$ dan $Y$, maka probabilitas marjinal dari $X$ bisa diperoleh dengan menjumlahkan (untuk diskrit) atau mengintegralkan (untuk kontinu) probabilitas gabungan
 $$
 p(x)= \begin{cases}
 \sum_{y\in \mathcal{Y}} p(x,y), \quad \text{jika diskret} \\
@@ -108,28 +108,28 @@ p(x)= \begin{cases}
 $$
 *intuisi*: Misal kita melempar koin dan dadu sekaligus, jika kita ingin menghitung total peluang dadu di angka $3$ maka kita jumlahkan peluang dadu di angka $3$ dengan kepala dan peluang dadu di angka $3$ dengan ekor.
 
-***Product Rule***: 
+*Product Rule*: 
 $$
 P(X,Y)=P(Y|X)P(X)
 $$
 *intuisi*: Misal kita punya 3 kelereng merah ($R$) dan 5 kelereng biru ($B$), jika kita ambil satu kelereng, lalu tanpa pengembalian kita ambil lagi 1 kelereng yang lain, berapa peluang $P(R,B)$. Pertama peluang terambil $R$ di pengambilan pertama adalah $P(R)=\frac{3}{8}$, lalu peluang terambil $B$ di pengambilan kedua adalah $P(B|R)=\frac{5}{7}$ sehingga $P(R,B)=P(R)\times P(B|R)=P(B|R)\times P(R)=\frac{5}{7}\times \frac{3}{8}=\frac{15}{56}$.
 
-***Teorema Bayes***:
+*Teorema Bayes*:
 $$
 \underbrace{ P(X|Y) }_{ posterior }=\frac{\overbrace{ P(Y|X) }^{ likelihood }\overbrace{ P(X) }^{ prior }}{\underbrace{ P(Y) }_{ evidence }}
 $$
 dengan
-- $P(X)$: **prior** → keyakinan awal tentang $X$.
-- $P(Y \mid X)$: **likelihood** → seberapa mungkin kita mengamati $Y$ jika $X$ benar.
-- $P(X \mid Y)$: **posterior** → keyakinan baru tentang $X$ setelah melihat data $Y$.
-- $P(Y)$: **evidence** → faktor normalisasi supaya hasilnya tetap jadi probabilitas valid.
+- $P(X)$: prior → keyakinan awal tentang $X$.
+- $P(Y \mid X)$: likelihood → seberapa mungkin kita mengamati $Y$ jika $X$ benar.
+- $P(X \mid Y)$: posterior → keyakinan baru tentang $X$ setelah melihat data $Y$.
+- $P(Y)$: evidence → faktor normalisasi supaya hasilnya tetap jadi probabilitas valid.
 
 ### Contoh 3: Kantong Permen
-Misalkan ada **dua kantong permen**:
+Misalkan ada dua kantong permen:
 - Kantong A: 70% merah 🍬, 30% hijau 🍬.
 - Kantong B: 30% merah 🍬, 70% hijau 🍬.
-Kita pilih satu kantong **secara acak** (probabilitas 50%-50%), lalu ambil **satu permen**.
-Jika ternyata permennya **merah**. _Seberapa besar peluang kita memilih dari Kantong A?_
+Kita pilih satu kantong secara acak (probabilitas 50%-50%), lalu ambil satu permen.
+Jika ternyata permennya merah. _Seberapa besar peluang kita memilih dari Kantong A?_
 Definisikan:
 - $H_{A}$: Peluang terpilih kantong $A$.
 - $H_{B}$: Peluang terpilih kantong $B$.
@@ -174,7 +174,7 @@ Misal kita punya data sebagai berikut:
 | State 1: Panas  | $0.5$       | Rp$9jt$ | Rp$8jt$ |
 | State 2: Biasa  | $0.3$       | Rp$5jt$ | Rp$6jt$ |
 | State 3: Dingin | $0.2$       | Rp$3jt$ | Rp$4jt$ |
-(**Tabel 1**: pengaruh hawa cuaca terhadap penjualan produk $X$ dan $Y$)
+(Tabel 1: pengaruh hawa cuaca terhadap penjualan produk $X$ dan $Y$)
 Maka nilai harapan untuk $X$ dan $Y$ adalah
 $$
 \begin{align}
@@ -184,13 +184,13 @@ E[Y] & = (0.5)(8jt)+(0.3)(6jt)+(0.2)(4jt) \\
  & = 6.6jt
 \end{align}
 $$
-**Note:** kadangkala mean juga ditulis sebagai $\mu$.
+Note: kadangkala mean juga ditulis sebagai $\mu$.
 
 > [!NOTE] Kovarians Univariat
 > Kovarians untuk variabel acak univariat $X$ dan $Y$  adalah ekspektasi dari perkalian antara selisih (deviasi) nilai dengan ekspektasinya keduanya:$$
 Cov_{X,Y}[x,y]=E_{X,Y}[(x-\mu_{x})(y-\mu_{y})]=E[XY]-E[X]E[Y]$$
 
-**Note**: Kovarian antara suatu variabel dengan dirinya sendiri ($Cov[x,x]$) disebut *varians* ($V_{X}(x)$), dan akar dari varians disebut *standar deviasi* ($\sigma_{x}$).
+Note: Kovarian antara suatu variabel dengan dirinya sendiri ($Cov[x,x]$) disebut *varians* ($V_{X}(x)$), dan akar dari varians disebut *standar deviasi* ($\sigma_{x}$).
 
 > [!NOTE] Kovarians Multivariat
 > untuk variabel acak multivariat $X$ dan $Y$ dengan $x \in \mathbb{R}^D$ dan $y \in \mathbb{R}^E$ maka: $$
@@ -228,7 +228,7 @@ Jika $X,Y$ independen, maka:
 - $p(x|y)=p(x)$
 - $V_{X,Y}[x+y]=V_{X}[x]+V_{Y}[y]$
 - $Cov_{X,Y}[x,y]=0$
-**Note**: poin terakhir tidak berlaku sebaliknya.
+Note: poin terakhir tidak berlaku sebaliknya.
 ## 6.4.6 Inner Products of Random Variables
 Kita tahu bahwa untuk dua variabel acak yang tidak berkorelasi maka:
 $$
@@ -283,8 +283,8 @@ Untuk suatu distribusi Gaussian bivariate
 $$p(\mathbf{x}) = \mathcal{N}\Big(\begin{bmatrix}0 \\ 2\end{bmatrix},\; \begin{bmatrix}0.3 & -1 \\ -1 & 5\end{bmatrix}\Big),\qquad \mathbf{x} = \begin{bmatrix}x_1 \\ x_2\end{bmatrix}$$.
 
 Akan dihitung:
-**(a)** Distribusi kondisional $p(x_1\mid x_2=-1)$.  
-**(b)** Distribusi marginal $p(x_1)$.
+(a) Distribusi kondisional $p(x_1\mid x_2=-1)$.  
+(b) Distribusi marginal $p(x_1)$.
 
 Partisi mean dan kovarians sesuai variabel:
 
@@ -292,7 +292,7 @@ $$\boldsymbol{\mu} = \begin{bmatrix}\mu_1 \\ \mu_2\end{bmatrix} = \begin{bmatrix
 \Sigma = \begin{bmatrix}\Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22}\end{bmatrix} = \begin{bmatrix}0.3 & -1 \\ -1 & 5\end{bmatrix}.$$
 dengan $|\Sigma| = 0.3\cdot5 - (-1)^2 = 1.5 - 1 = 0.5 > 0$
 
-**(a) Kondisional: $p(x_1\mid x_2 = -1)$**
+(a) Kondisional: $p(x_1\mid x_2 = -1)$
 Kita masukkan $b = -1$.
 - Hitung $\Sigma_{22}^{-1} = 1 / 5 = 0.2.$
 - Mean kondisional:
@@ -301,12 +301,12 @@ $$\mu_{1|2} = 0 + (-1) \cdot 0.2 \cdot (-1 - 2) = (-0.2) \cdot (-3) = 0.6.$$
 $$\Sigma_{1|2} = 0.3 - (-1) \cdot 0.2 \cdot (-1) = 0.3 - 0.2 = 0.1.$$
 Sehingga
 $$\boxed{\;p(x_1\mid x_2=-1) = \mathcal{N}(x_1\mid 0.6,\;0.1)\;}$$
-**Interpretasi singkat:** mengetahui $x_2=-1$ menggeser mean dari 0 menjadi 0.6 dan mengecilkan varians dari 0.3 menjadi 0.1 — yaitu ketidakpastian mengenai $x_1$ berkurang dan pusat tebakan bergeser sesuai korelasi negatif di kovarians.
+Interpretasi singkat: mengetahui $x_2=-1$ menggeser mean dari 0 menjadi 0.6 dan mengecilkan varians dari 0.3 menjadi 0.1 — yaitu ketidakpastian mengenai $x_1$ berkurang dan pusat tebakan bergeser sesuai korelasi negatif di kovarians.
 
-**(b) Marginal: $p(x_1)$**
+(b) Marginal: $p(x_1)$
 Untuk marginal cukup ambil komponen mean dan varians yang sesuai:
 $$\boxed{\;p(x_1) = \mathcal{N}(x_1\mid 0,\;0.3)\;}$$
-**Catatan:** varians marginal (0.3) lebih besar daripada varians kondisional (0.1) — ini sesuai: informasi tambahan tentang $x_2$ menurunkan ketidakpastian terhadap $x_1$.
+Catatan: varians marginal (0.3) lebih besar daripada varians kondisional (0.1) — ini sesuai: informasi tambahan tentang $x_2$ menurunkan ketidakpastian terhadap $x_1$.
 # 6.6 Conjugacy and the Exponential Family
 ## 6.6.1 Conjugacy
 Dalam Bayesian inference:
