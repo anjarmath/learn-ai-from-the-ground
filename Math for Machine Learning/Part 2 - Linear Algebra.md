@@ -56,7 +56,7 @@ Untuk sebuah matriks $A \in \mathbb{R}^{n \times n}$. Asumsikan ada sebuah matri
 
 Jika sebuah matriks memiliki invers, maka matriks tersebut disebut *regular/inversible/nonsingular*, sebaliknya disebut *singular/noninversible*.
 ### Transpose Matrik
-Untuk sebuah matriks $A \in \mathbb{R}^{m \times n}$. Matriks $B \in \mathbb{R}^{n \times m}$ di mana $b_{ij} = a_{ji}$ adalah transpose dari matriks $A$, dan dinotasikan sebagai $A^T$ .
+Untuk sebuah matriks $A \in \mathbb{R}^{m \times n}$. Matriks $B \in \mathbb{R}^{n \times m}$ di mana $b_{ij} = a_{ji}$ adalah transpose dari matriks $A$, dan dinotasikan sebagai $A ^\top$ .
 
 ---
 # 2.2 Solusi Sistem Persamaan Linear
@@ -81,7 +81,7 @@ x_{4}
 $$
 Karena jumlah variabel lebih banyak dari jumlah persamaan yang diberikan, kita bisa harapkan sejumlah tak hingga solusi.
 
-Jika kita asumsikan $x_{3}=0$ dan $x_{4}=0$, maka dari persamaan $1$ dan persamaan $2$ didapat $x_{1}=42$ dan $x_{2}=48$, sehingga solusinya adalah $\begin{bmatrix}42 & 8 & 0 & 0\end{bmatrix}^T$, kita sebut ini adalah solusi khusus.
+Jika kita asumsikan $x_{3}=0$ dan $x_{4}=0$, maka dari persamaan $1$ dan persamaan $2$ didapat $x_{1}=42$ dan $x_{2}=48$, sehingga solusinya adalah $\begin{bmatrix}42 & 8 & 0 & 0\end{bmatrix} ^\top$, kita sebut ini adalah solusi khusus.
 
 Untuk mencari solusi umum, kita bisa menambahkan solusi khusus dengan persamaan apapun yang memenuhi $Ax=0$, sebab hasilnya akan tetap memenuhi solusi khusus.
 $$
@@ -185,7 +185,7 @@ $$
 > - Baris nol (jika ada) diletakkan di bawah.
 > - Semua elemen di bawah pivot = 0.
 
-Sehingga sistem bisa diselesaikan jika $a=-1$, asumsikan $x_{2}=x_{5}=0$ maka didapat solusi khusus $\begin{bmatrix}2 & 0 & -1 & 1 & 0\end{bmatrix}^T$
+Sehingga sistem bisa diselesaikan jika $a=-1$, asumsikan $x_{2}=x_{5}=0$ maka didapat solusi khusus $\begin{bmatrix}2 & 0 & -1 & 1 & 0\end{bmatrix} ^\top$
 Lalu dengan mengasumsikan $x_{2}=s,x_{5}=t, s,t \in \mathbb{R}$, akan didapatkan solusi umum:
 $$
 \left\{ x \in \mathbb{R}^5:x=\begin{bmatrix}
@@ -333,7 +333,3 @@ $$
 ## 2.6.2 Rank
 Jumlah dari kolom yang linearly independent dari matrix $A\in \mathbb{R}^{m\times n}$ sama dengan jumlah baris yang linearly independent, dan jumlah ini disebut dengan $rank$ dan dinotasikan sebagai $rk(A)$.
 Misalnya, $rk(\begin{bmatrix}1 & 0 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 0\end{bmatrix})=2$.
-
----
-# Excercises
-1. Using Gaussian Elimination. find all solution $Ax=b$

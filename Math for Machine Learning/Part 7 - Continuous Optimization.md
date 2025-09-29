@@ -49,21 +49,21 @@ Optimisasi terkendala adalah proses untuk menemukan nilai maksimum atau minimum 
 
 Secara formal, masalah ini dapat ditulis sebagai:
 
-- Minimalkan (atau maksimalkan): $f(\mathbf{x})$
-- Dengan kendala: $g_i(\mathbf{x}) \le 0$ untuk setiap $i=1, \dots, m$ dan/atau $h_j(\mathbf{x}) = 0$ untuk setiap $j=1, \dots, n$.
+- Minimalkan (atau maksimalkan): $f( x)$
+- Dengan kendala: $g_i( x) \le 0$ untuk setiap $i=1, \dots, m$ dan/atau $h_j( x) = 0$ untuk setiap $j=1, \dots, n$.
 
-Di sini, $f(\mathbf{x})$ adalah fungsi objektif, sementara $g_i(\mathbf{x})$ adalah kendala pertidaksamaan dan $h_j(\mathbf{x})$ adalah kendala persamaan.
+Di sini, $f( x)$ adalah fungsi objektif, sementara $g_i( x)$ adalah kendala pertidaksamaan dan $h_j( x)$ adalah kendala persamaan.
 
 Ide visual tentang persinggungan ini memiliki landasan matematis yang kuat menggunakan konsep gradien (∇).
 
 - Gradien dari sebuah fungsi pada suatu titik selalu tegak lurus terhadap garis kontur fungsi tersebut di titik itu.
 - Ketika dua kurva (garis kontur $f$ dan kurva kendala $g$) bersinggungan, mereka memiliki garis singgung yang sama di titik tersebut. Akibatnya, vektor gradien mereka juga harus sejajar, artinya keduanya menunjuk ke arah yang sama atau berlawanan.
-- Secara matematis, ini berarti gradien satu fungsi adalah kelipatan skalar dari gradien fungsi lainnya. Hubungan ini dinyatakan sebagai: $$ \nabla f(\mathbf{x}) = \lambda \nabla g(\mathbf{x}) $$
+- Secara matematis, ini berarti gradien satu fungsi adalah kelipatan skalar dari gradien fungsi lainnya. Hubungan ini dinyatakan sebagai: $$ \nabla f( x) = \lambda \nabla g( x) $$
 - Konstanta proporsionalitas $\lambda$ ini disebut Pengali Lagrange (_Lagrange Multiplier_).
 
 Untuk menyelesaikan masalah optimisasi terkendala, kita membangun sebuah sistem persamaan yang terdiri dari persamaan gradien di atas dan persamaan kendala aslinya.
 
-Secara lebih formal, pendekatan ini menggunakan fungsi Lagrangian, $\mathcal{L}(\mathbf{x}, \lambda)$, yang menggabungkan fungsi objektif dan kendala menjadi satu fungsi tunggal: $$ \mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}) = f(\mathbf{x}) + \sum_{i=1}^{m} \lambda_i g_i(\mathbf{x}) $$ Di mana $\lambda_i$ adalah Pengali Lagrange untuk setiap kendala $g_i(\mathbf{x})$.
+Secara lebih formal, pendekatan ini menggunakan fungsi Lagrangian, $\mathcal{L}( x, \lambda)$, yang menggabungkan fungsi objektif dan kendala menjadi satu fungsi tunggal: $$ \mathcal{L}( x, \boldsymbol{\lambda}) = f( x) + \sum_{i=1}^{m} \lambda_i g_i( x) $$ Di mana $\lambda_i$ adalah Pengali Lagrange untuk setiap kendala $g_i( x)$.
 #### Contoh 1: Memaksimalkan Fungsi pada Sebuah Lingkaran
 Misalkan kita ingin memaksimalkan fungsi $f(x, y) = x^2y$ dengan kendala $g(x, y) = x^2 + y^2 = 1$.
 Pertama, hitung gradien dari kedua fungsi:
@@ -87,7 +87,7 @@ Selesaikan sistem persamaan tersebut untuk menemukan nilai $x$, $y$, dan $\lambd
 Optimisasi cembung adalah subbidang optimisasi yang sangat penting karena memiliki properti yang kuat: *setiap minimum lokal yang ditemukan juga merupakan minimum global*. Hal ini menghilangkan masalah terjebak dalam solusi suboptimal yang sering terjadi pada fungsi non-cembung. Selain itu, untuk masalah optimisasi cembung, berlaku *strong duality*, yang berarti nilai optimal dari masalah primal dan masalah dual adalah sama.
 
 > [!NOTE] Himpunan Cembung (Convex Set)
-> Sebuah himpunan $C$ disebut cembung jika untuk setiap dua titik $\mathbf{x}, \mathbf{y} \in C$ dan skalar $\theta$ dengan $0 \le \theta \le 1$, garis lurus yang menghubungkan kedua titik tersebut sepenuhnya berada di dalam himpunan: $$ \theta\mathbf{x} + (1-\theta)\mathbf{y} \in C $$
+> Sebuah himpunan $C$ disebut cembung jika untuk setiap dua titik $x, \mathbf{y} \in C$ dan skalar $\theta$ dengan $0 \le \theta \le 1$, garis lurus yang menghubungkan kedua titik tersebut sepenuhnya berada di dalam himpunan: $$ \theta x + (1-\theta)\mathbf{y} \in C $$
 
 > [!NOTE] Fungsi Cembung (Convex Function)
 >Sebuah fungsi $f: \mathbb{R}^D \to \mathbb{R}$ yang domainnya adalah himpunan cembung disebut fungsi cembung jika ruas garis yang menghubungkan dua titik mana pun pada grafiknya selalu berada di atas atau pada grafik fungsi itu sendiri. Secara matematis, untuk setiap $x, y$ dalam domain $f$ dan untuk setiap skalar $\theta$ dengan $0 \le \theta \le 1$, berlaku: $$ f(\theta x + (1 - \theta) y) \le \theta f(x) + (1 - \theta) f(y) $$ . Ketidaksetaraan ini juga dikenal sebagai Ketidaksetaraan Jensen. Secara visual, fungsi cembung berbentuk seperti "mangkuk". Fungsi cekung (_concave function_) adalah negatif dari fungsi cembung.
@@ -115,4 +115,4 @@ Ini adalah kasus di mana fungsi objektif adalah fungsi kuadratik cembung dan ken
 ## 7.3.2 Konjugat Cembung (Convex Conjugate)
 Konjugat cembung, atau dikenal juga sebagai _transformasi Legendre-Fenchel_, adalah cara lain untuk memahami dualitas dalam optimisasi cembung. Secara intuitif, transformasi ini mendeskripsikan ulang sebuah fungsi cembung bukan berdasarkan titik-titiknya $(x, f(x))$, melainkan berdasarkan hiperbidang penyokongnya (garis singgung).
 
-Definisi formal dari konjugat cembung untuk fungsi $f: \mathbb{R}^D \to \mathbb{R}$ adalah fungsi $f^\star$ yang didefinisikan sebagai: $$ f^\star(s) = \sup_{x \in \mathbb{R}^D} (\langle s, x \rangle - f(x)) $$ Di sini, $s$ dapat dianggap sebagai gradien atau "kemiringan" dari hiperbidang penyokong. Untuk fungsi cembung, menerapkan transformasi konjugat dua kali akan mengembalikan fungsi aslinya. Alat ini sangat berguna untuk menurunkan masalah dual, terutama dalam konteks machine learning.
+Definisi formal dari konjugat cembung untuk fungsi $f: \mathbb{R}^D \to \mathbb{R}$ adalah fungsi $f^\star$ yang didefinisikan sebagai: $$ f^*(s) = \sup_{x \in \mathbb{R}^D} (\langle s, x \rangle - f(x)) $$ Di sini, $s$ dapat dianggap sebagai gradien atau "kemiringan" dari hiperbidang penyokong. Untuk fungsi cembung, menerapkan transformasi konjugat dua kali akan mengembalikan fungsi aslinya. Alat ini sangat berguna untuk menurunkan masalah dual, terutama dalam konteks machine learning.

@@ -43,7 +43,7 @@ Di sini, $A_{k,j}\in \mathbb{R}^{n-1\times n-1}$ adalah submatriks yang diperole
 ---
 Untuk $A\in \mathbb{R}^{n\times n}$, determinannya memenuhi sifat-sifat berikut:
 1. $\det(AB)=\det(A)\det(B)$
-2. $\det A=\det A^T$
+2. $\det A=\det A ^\top$
 3. $\det(A^{-1})=\frac{1}{\det(A)}$
 4. Matriks-matriks yang sama memiliki determinan yang sama
 5. Menambahkan kelipatan kolom/baris ke yang lainnya tidak mengubah determinan
@@ -151,9 +151,8 @@ Misal $A = \begin{bmatrix} 4 & 2 \\ 1 & 3 \end{bmatrix}$:
 
 ---
 ## 4.2.4 Eigenspace
-
 **Definisi**:  
-Untuk setiap eigenvalue $\lambda$, **eigenspace** adalah **himpunan semua eigenvectors yang berhubungan dengan $\lambda$, ditambah vektor nol. Secara formal:
+Untuk setiap eigenvalue $\lambda$, eigenspace adalah himpunan semua eigenvectors yang berhubungan dengan $\lambda$, ditambah vektor nol. Secara formal:
 $$
 E_\lambda = \{ \mathbf{v} \in \mathbb{R}^n \ |\ (A - \lambda I)\mathbf{v} = 0 \}
 $$
@@ -175,16 +174,16 @@ Eigenspace adalah **ruang vektor** karena:
 
 # 4.3 Cholesky Decomposition
 Cholesky Decomposition adalah teknik memecah matriks **simetris** dan **positif definit** menjadi hasil perkalian matriks segitiga bawah dan transpose-nya.
-$$A = L \cdot L^T$$
+$$A = L \cdot L ^\top$$
 di mana:
 - $L$= matriks segitiga bawah (lower triangular) dengan elemen diagonal positif.
-- $L^T$ = transpose dari $L$ (segitiga atas).
+- $L ^\top$ = transpose dari $L$ (segitiga atas).
 ## 4.3.1 Syarat Cholesky Decomposition
 Agar bisa dilakukan, matriks $A$ harus:
-1. **Simetris** → $A = A^T$
+1. **Simetris** → $A = A ^\top$
 2. **Positif definit** → untuk semua vektor tak nol $x$,
 $$
-\mathbf{x}^T A \mathbf{x} > 0
+\mathbf{x} ^\top  A \mathbf{x} > 0
 $$
     atau semua **eigenvalues**-nya positif.    
 ## 4.3.2 Rumus Elemen $L$
@@ -243,43 +242,43 @@ $$
 $w$ berdimensi $2$ sedangkan $w'$ berdimensi $3$.
 
 ---
-Jika kita ambil sembarang matriks $A\in \mathbb{R}^{m\times n}$ dan mengalikannya dengan $A^T$ maka akan menghasilkan matriks persegi yang simetris:
-- $AA^T\in \mathbb{R}^{m\times m}$, disebut $(S_{L})$ memiliki $m$ buah eigenvector tegak lurus, disebut sebagai $Left\ Singular\ Vector$.
-- $A^TA\in \mathbb{R}^{n\times n}$, disebut $(S_{R})$ memiliki $n$ buah eigenvector tegak lurus, disebut sebagai $Right\ Singular\ Vector$.
+Jika kita ambil sembarang matriks $A\in \mathbb{R}^{m\times n}$ dan mengalikannya dengan $A ^\top$ maka akan menghasilkan matriks persegi yang simetris:
+- $AA ^\top \in \mathbb{R}^{m\times m}$, disebut $(S_{L})$ memiliki $m$ buah eigenvector tegak lurus, disebut sebagai $Left\ Singular\ Vector$.
+- $A ^\top A\in \mathbb{R}^{n\times n}$, disebut $(S_{R})$ memiliki $n$ buah eigenvector tegak lurus, disebut sebagai $Right\ Singular\ Vector$.
 
 **Teorema**. SVD menyatakan bahwa sebarang matriks $A\in \mathbb{R}^{m\times n}$ dapat dipecah menjadi perkalian matriks
 $$
-A=U\Sigma V^T
+A=U\Sigma V ^\top 
 $$
 Dimana:
 - $U$: Matriks ortogonal berukuran $m\times m$. Kolom-kolomnya adalah Left singular vector.
 - $\Sigma$: Matriks diagonal berukuran $m\times n$. Nilai-nilai pada diagonalnya disebut **Nilai Singular (Singular Values)**.
-- $V^T$: Transpose dari matriks ortogonal $V$ yang berukuran $n\times n$. Kolom-kolomnya adalah Right Singular Vectors.
+- $V ^\top$: Transpose dari matriks ortogonal $V$ yang berukuran $n\times n$. Kolom-kolomnya adalah Right Singular Vectors.
 ### Contoh 4
 cari dekomposisi dari $A=\begin{bmatrix}3 & 0 \\ 4 & 5\end{bmatrix}$
 
 **Langkah 1: Cari Matriks $V$ dan Nilai Singular ($\Sigma$)**
-Kita akan menggunakan matriks simetris $A^TA$ untuk menemukan $V$ dan $\Sigma$.
+Kita akan menggunakan matriks simetris $A ^\top A$ untuk menemukan $V$ dan $\Sigma$.
 $$
 \begin{align}
-A^T A  & = \begin{bmatrix} 3 & 4 \\ 0 & 5 \end{bmatrix} \begin{bmatrix} 3 & 0 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} 9+16 & 0+20 \\ 0+20 & 0+25 \end{bmatrix} = \begin{bmatrix} 25 & 20 \\ 20 & 25 \end{bmatrix}
+A ^\top  A  & = \begin{bmatrix} 3 & 4 \\ 0 & 5 \end{bmatrix} \begin{bmatrix} 3 & 0 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} 9+16 & 0+20 \\ 0+20 & 0+25 \end{bmatrix} = \begin{bmatrix} 25 & 20 \\ 20 & 25 \end{bmatrix}
 \end{align}
 $$
 
-Sekarang, cari _eigenvalue_ ($\lambda$) dan _eigenvector_ dari $A^TA$.
-- Eigenvalue dari $A^TA$ adalah $\lambda_{1}=45$ dan $\lambda_{2}=5$.
+Sekarang, cari _eigenvalue_ ($\lambda$) dan _eigenvector_ dari $A ^\top A$.
+- Eigenvalue dari $A ^\top A$ adalah $\lambda_{1}=45$ dan $\lambda_{2}=5$.
 - Nilai Singular ($\sigma$): Adalah akar kuadrat dari eigenvalue. Kita urutkan dari yang terbesar.
     - $\sigma_1=\sqrt{45}=3\sqrt5$
     - $\sigma_2=\sqrt5$
 - Diperoleh $\Sigma=\begin{bmatrix}\sigma_{1} & 0 \\ 0 & \sigma_{2}\end{bmatrix}=\begin{bmatrix}3\sqrt{ 5 } & 0 \\ 0 & \sqrt{ 5 }\end{bmatrix}$
-- **Vektor Singular Kanan ($V$)**: Adalah eigenvector dari $A^TA$ yang sudah dinormalisasi.
+- **Vektor Singular Kanan ($V$)**: Adalah eigenvector dari $A ^\top A$ yang sudah dinormalisasi.
     - Untuk $\lambda_{1}=\sqrt{ 45 }$, eigenvectornya adalah $v_1=\begin{bmatrix} \frac{1}{\sqrt2}  \\   \frac{1}{\sqrt2} \end{bmatrix}$
     - Untuk $\lambda_{2}=\sqrt{ 5 }$, eigenvectornya adalah $v_2=\begin{bmatrix} -\frac{1}{\sqrt2}  \\   \frac{1}{\sqrt2} \end{bmatrix}$
     - Diperoleh:
 $$
 \begin{align}
 V & =\begin{bmatrix} \frac{1}{\sqrt2} & -\frac{1}{\sqrt2} \\ \frac{1}{\sqrt2} & \frac{1}{\sqrt2} \end{bmatrix} \\
-V^T & = \begin{bmatrix} \frac{1}{\sqrt2} & \frac{1}{\sqrt2} \\ -\frac{1}{\sqrt2} & \frac{1}{\sqrt2} \end{bmatrix}
+V ^\top  & = \begin{bmatrix} \frac{1}{\sqrt2} & \frac{1}{\sqrt2} \\ -\frac{1}{\sqrt2} & \frac{1}{\sqrt2} \end{bmatrix}
 \end{align}
 $$
 
@@ -324,11 +323,11 @@ $$
 # 4.6 Matrix Approximation
 Melalui konsep SVD, suatu matriks $A\in \mathbb{R}^{m\times n}$ dengan rank $r$ bisa ditulis sebagai penjumlahan matriks-matriks rank-1 $A_{i}$ sehingga:
 $$
-A= \sum_{i=1}^r\sigma_{i}u_{i}v_{i}^T= \sum_{i=1}^r\sigma_{i}A_{i}
+A= \sum_{i=1}^r\sigma_{i}u_{i}v_{i} ^\top = \sum_{i=1}^r\sigma_{i}A_{i}
 $$
 Lalu kita bisa menyederhanakan penjumlahan ini dengan tidak menyertakan keseluruhan $i=1,\dots,r$. Kita ambil suatu nilai $k<r$ untuk mendapatkan *rank-k approximation*:
 $$
-\hat{A}(k)=\sum_{i=1}^k\sigma_{i}u_{i}v_{i}^T= \sum_{i=1}^k\sigma_{i}A_{i}
+\hat{A}(k)=\sum_{i=1}^k\sigma_{i}u_{i}v_{i} ^\top = \sum_{i=1}^k\sigma_{i}A_{i}
 $$
 Contoh penerapan *matrix approximation* pada citra:
 ![[Pasted image 20250814194308.png]]

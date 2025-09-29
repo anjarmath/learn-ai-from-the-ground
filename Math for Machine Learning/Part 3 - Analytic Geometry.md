@@ -20,13 +20,13 @@ $$
 $$
 - Euclidean Norm:
 $$
-\lVert x \rVert=\sqrt{ \sum_{i=1}^nx_{i}^2 }=\sqrt{ x^Tx } 
+\lVert x \rVert=\sqrt{ \sum_{i=1}^nx_{i}^2 }=\sqrt{ x ^\topx } 
 $$
 ![[Pasted image 20250729135848.png]]
 # 3.2 Inner Products
 ## 3.2.1 Dot Products
 $$
-x^Ty=\sum_{i=1}^nx_{i}y_{i}
+x ^\topy=\sum_{i=1}^nx_{i}y_{i}
 $$
 ## 3.2.2 General Inner Products
 > [!NOTE] Bilinear Mapping
@@ -59,10 +59,10 @@ A_{1}=\begin{bmatrix}
 6 & 3
 \end{bmatrix}
 $$
-$A_{1}$ disebut positif definit karena di simetris($A_{1}=A_{1}^T$) dan
+$A_{1}$ disebut positif definit karena di simetris($A_{1}=A_{1} ^\top$) dan
 $$
 \begin{align}
-x^TA_{1}x & =\begin{bmatrix}
+x ^\top A_{1}x & =\begin{bmatrix}
 x_{1} \\
 x_{2}
 \end{bmatrix}\begin{bmatrix}
@@ -75,7 +75,7 @@ x_{1} & x_{2}
  & = (3x_{1}+2x_{2})^2+x_{2}^2 > 0 
 \end{align}
 $$
-Sebaliknya, $A_{2}$ simetris namun tidak positif definit sebab $x^TA_{2}x$ bisa $<0$ misalnya untuk $x=[2,-3]^T$.
+Sebaliknya, $A_{2}$ simetris namun tidak positif definit sebab $x ^\top A_{2}x$ bisa $<0$ misalnya untuk $x=[2,-3] ^\top$.
 # 3.3 Length & Distances
 $$
 \begin{align}
@@ -92,16 +92,16 @@ $$
 \end{align}
 $$
 ### Contoh 3:
-Untuk $x=[1\ 1]^T$ dan $y=[1\ 2]^T$ maka:
+Untuk $x=[1\ 1] ^\top$ dan $y=[1\ 2] ^\top$ maka:
 $$
-\cos \mathcal{w}=\frac{\left< x,y \right>}{\lVert x \rVert\lVert y \rVert}=\frac{\left< x,y \right>}{\sqrt{ \left< x,x \right>\left< y,y \right>   }}=\frac{x^Ty}{\sqrt{ x^Txy^Ty }}=\frac{3}{\sqrt{ 10 }} 
+\cos \mathcal{w}=\frac{\left< x,y \right>}{\lVert x \rVert\lVert y \rVert}=\frac{\left< x,y \right>}{\sqrt{ \left< x,x \right>\left< y,y \right>   }}=\frac{x ^\top y}{\sqrt{ x ^\top xy ^\top y }}=\frac{3}{\sqrt{ 10 }} 
 $$
 
 Dua vektor disebut *orthogonal* jika dan hanya jika $\left< x,y \right> =0$ dam ditulis $x\bot y$. Lebih lanjut, jika $\lVert x \rVert=\lVert y \rVert=1$ sehingga vektor adalah vektor unit maka disebut *orthonormal*.
 
 Suatu matriks disebut *orthogonal* jika dan hanya jika kolom-kolomnya orthonormal sehingga,
 $$
-AA^T=I=A^TA \implies A^{-1}=A^T
+AA ^\top=I=A ^\top A \implies A^{-1}=A^\top
 $$
 # 3.5 Orthonormal Basis
 Ambil ruang vektor $V$ $n-$dimensi dengan basis $\{ b_{1},\dots,b_{n} \}$ dari $V$. Jika
@@ -123,7 +123,7 @@ b_{1}=\frac{1}{\sqrt{ 2 }}\begin{bmatrix}
 -1
 \end{bmatrix}
 $$
-membentuk orthonormal basis sebab $b_{1}^Tb_{2}=0$ dan $\lVert b_{1} \rVert=\lVert b_{2} \rVert=1$.
+membentuk orthonormal basis sebab $b_{1} ^\top b_{2}=0$ dan $\lVert b_{1} \rVert=\lVert b_{2} \rVert=1$.
 # 3.6 Orthogonal Complement
 *Orthogonal complement*, dari sebuah subruang $V \subseteq \mathbb{R}^n$ adalah himpunan semua vektor di $\mathbb{R}^n$ yang tegak lurus terhadap semua vektor di $V$.
 
