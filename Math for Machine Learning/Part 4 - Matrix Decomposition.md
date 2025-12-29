@@ -86,8 +86,8 @@ c_{n-1} & =(-1)^n-1tr(A)\end{align}$$
 $$
 A \mathbf{v} = \lambda \mathbf{v}
 $$
-- **v** = eigenvector (tidak nol)
-- **λ** = eigenvalue (skalar)
+- $v$ = eigenvector (tidak nol)
+- $\lambda$ = eigenvalue (skalar)
 - Artinya: ketika **v** dilewatkan ke **A**, hasilnya hanya skala dari **v** itu sendiri.
 ## 4.2.2 Cara Mencari Eigenvalues & Eigenvectors
 

@@ -31,35 +31,26 @@ x_{i+1}  & = x_{i} − \gamma_{i}(\nabla f(xi))^⊤ + \alpha\Delta x_{i} \\
 $$
 dengan suatu $\alpha \in[0,1]$ adalah parameter momentum. Suku $\alpha\Delta x_{i}$ inilah yang berperan sebagai "memori".
 ## 7.1.3 Stochastic Gradient Descent (SGD)
-_Stochastic Gradient Descent_ (SGD) adalah sebuah pendekatan stokastik dari metode _gradient descent_ yang digunakan untuk meminimalkan fungsi objektif, terutama yang berbentuk sebagai penjumlahan dari beberapa fungsi. Bentuk umum fungsi objektifnya adalah: $L(\theta) = \sum_{n=1}^n L_{n}(\theta)$ di mana $\theta$ adalah vektor parameter model dan $L_{n}$ adalah fungsi _loss_ untuk data ke-$n$.
+_Stochastic Gradient Descent_ (SGD) adalah sebuah pendekatan stokastik dari metode _gradient descent_ yang digunakan untuk meminimalkan fungsi objektif, terutama yang berbentuk sebagai penjumlahan dari beberapa fungsi. Bentuk umum fungsi objektifnya adalah: $L(\theta) = \sum_{n=1}^N L_{n}(\theta)$ di mana $\theta$ adalah vektor parameter model dan $L_{n}$ adalah fungsi _loss_ untuk data ke-$n$.
 
 _Gradient descent_ standar, yang juga dikenal sebagai _batch gradient descent_, mengharuskan perhitungan gradien dari seluruh $N$ data dalam _training set_ untuk melakukan satu kali pembaruan parameter: $$\theta_{i+1}=\theta_{i}-\gamma_{i}\sum_{n=1}^N(\nabla L_{n}(\theta_{i}))^⊤$$
 Proses ini menjadi sangat mahal secara komputasi dan memakan waktu, terutama ketika ukuran _training set_ sangat besar.
 
 SGD mengatasi masalah ini dengan menggunakan aproksimasi gradien yang "murah" dengan menggunakan subset acak dari data (disebut _mini-batch_) untuk mengestimasi gradien di setiap langkahnya. Dalam kasus ekstrem, estimasi gradien bahkan bisa dilakukan hanya dengan satu data acak. Kata "stokastik" merujuk  bahwa gradien yang digunakan hanyalah sebuah aproksimasi.
 
-Kunci keberhasilan SGD adalah bahwa untuk konvergensi, estimasi gradien yang digunakan hanya perlu menjadi estimasi yang tidak bias (_unbiased estimate_) dari gradien sebenarnya. Penggunaan sampel acak (subsample) dari data sudah cukup untuk memenuhi syarat ini. Dengan laju pembelajaran (_learning rate_) yang menurun secara tepat, SGD secara teoretis dijamin akan konvergen menuju minimum lokal.
-
-Dalam konteks _machine learning_, tujuan utamanya adalah performa generalisasi, bukan sekadar menemukan nilai minimum yang presisi dari fungsi objektif pada data latih. Oleh karena itu, pendekatan dengan gradien aproksimatif seperti SGD telah terbukti sangat efektif dan banyak digunakan dalam masalah _machine learning_ skala besar.
-
-Tentu, berikut adalah rangkuman padat dengan bahasa matematika formal untuk bagian 7.2 mengenai Optimisasi Terkendala dan Pengali Lagrange, berdasarkan sumber yang Anda berikan.
-
+Kunci keberhasilan SGD adalah bahwa untuk konvergensi, estimasi gradien yang digunakan hanya perlu menjadi estimasi yang tidak bias (_unbiased estimate_) dari gradien sebenarnya. Penggunaan sampel acak (subsample) dari data sudah cukup untuk memenuhi syarat ini. Dengan laju pembelajaran (_learning rate_) yang menurun secara tepat, SGD secara teoretis dijamin akan konvergen menuju minimum lokal. Tujuan dari machine learning adalah performa generalisasi, bukan sekadar menemukan nilai minimum yang presisi dari fungsi objektif pada data latih. Oleh karena itu, pendekatan dengan gradien aproksimatif seperti SGD akan menjadi lebih efektif.
 # 7.2 Optimasi Terkendala dan Pengali Lagrange
-Optimisasi terkendala adalah proses untuk menemukan nilai maksimum atau minimum (nilai optimal) dari sebuah fungsi, yang disebut fungsi objektif (_objective function_), dengan syarat bahwa variabel-variabelnya harus memenuhi serangkaian batasan atau kondisi yang disebut kendala (_constraints_). Berbeda dengan optimisasi tak terkendala di mana kita mencari titik terendah atau tertinggi di seluruh "permukaan" fungsi, optimisasi terkendala membatasi pencarian kita hanya pada wilayah yang diizinkan oleh kendala-kendala tersebut.
+
+> [!NOTE] Optimasi Terkendala
+> Optimisasi terkendala adalah proses untuk menemukan nilai maksimum atau minimum (nilai optimal) dari sebuah fungsi, dengan syarat bahwa variabel-variabelnya harus memenuhi serangkaian batasan atau kondisi yang disebut kendala (_constraints_). Berbeda dengan optimisasi tak terkendala di mana kita mencari titik terendah atau tertinggi di seluruh "permukaan" fungsi, optimisasi terkendala membatasi pencarian kita hanya pada wilayah yang diizinkan oleh kendala-kendala tersebut.
 
 Secara formal, masalah ini dapat ditulis sebagai:
-
 - Minimalkan (atau maksimalkan): $f( x)$
 - Dengan kendala: $g_i( x) \le 0$ untuk setiap $i=1, \dots, m$ dan/atau $h_j( x) = 0$ untuk setiap $j=1, \dots, n$.
-
-Di sini, $f( x)$ adalah fungsi objektif, sementara $g_i( x)$ adalah kendala pertidaksamaan dan $h_j( x)$ adalah kendala persamaan.
-
 Ide visual tentang persinggungan ini memiliki landasan matematis yang kuat menggunakan konsep gradien (∇).
-
 - Gradien dari sebuah fungsi pada suatu titik selalu tegak lurus terhadap garis kontur fungsi tersebut di titik itu.
 - Ketika dua kurva (garis kontur $f$ dan kurva kendala $g$) bersinggungan, mereka memiliki garis singgung yang sama di titik tersebut. Akibatnya, vektor gradien mereka juga harus sejajar, artinya keduanya menunjuk ke arah yang sama atau berlawanan.
-- Secara matematis, ini berarti gradien satu fungsi adalah kelipatan skalar dari gradien fungsi lainnya. Hubungan ini dinyatakan sebagai: $$ \nabla f( x) = \lambda \nabla g( x) $$
-- Konstanta proporsionalitas $\lambda$ ini disebut Pengali Lagrange (_Lagrange Multiplier_).
+Secara matematis, ini berarti gradien satu fungsi adalah kelipatan skalar dari gradien fungsi lainnya. Hubungan ini dinyatakan sebagai: $$ \nabla f( x) = \lambda \nabla g( x) $$Konstanta proporsionalitas $\lambda$ ini disebut Pengali Lagrange (_Lagrange Multiplier_).
 
 Untuk menyelesaikan masalah optimisasi terkendala, kita membangun sebuah sistem persamaan yang terdiri dari persamaan gradien di atas dan persamaan kendala aslinya.
 
@@ -109,10 +100,10 @@ g_i(x) \le 0 \quad \text{untuk semua } i = 1, \dots, m \\
 Dalam konteks ini, berlaku dualitas kuat (strong duality), yang berarti solusi optimal dari masalah dual sama dengan solusi optimal dari masalah primal.
 
 ## 7.3.1 Linear Programming (LP)
-Ini adalah kasus khusus di mana fungsi objektif dan semua fungsi kendala adalah linear. Bentuk primal dari LP adalah: $$ \min_{x \in \mathbb{R}^d} c^\top x \quad \text{tunduk pada} \quad Ax \le b $$ Masalah dual yang bersesuaian adalah: $$ \max_{\lambda \in \mathbb{R}^m} -b^\top \lambda \quad \text{tunduk pada} \quad c + A^\top \lambda = 0, \quad \lambda \ge 0 $$    
+Ini adalah kasus khusus di mana fungsi objektif dan semua fungsi kendala adalah linear. Bentuk primal dari LP adalah: $$ \min_{x \in \mathbb{R}^d} c^\top x \quad \text{dengan} \quad Ax \le b $$ Masalah dual yang bersesuaian adalah: $$ \max_{\lambda \in \mathbb{R}^m} -b^\top \lambda \quad \text{dengan} \quad c + A^\top \lambda = 0, \quad \lambda \ge 0 $$    
 ## 7.3.2 Quadratic Programming (QP)
-Ini adalah kasus di mana fungsi objektif adalah fungsi kuadratik cembung dan kendalanya adalah afin (linear). Bentuk primal dari QP adalah: $$ \min_{x \in \mathbb{R}^d} \frac{1}{2} x^\top Qx + c^\top x \quad \text{tunduk pada} \quad Ax \le b $$di mana matriks $Q$ adalah simetris dan positif definit, yang memastikan fungsi objektifnya cembung. Masalah dual yang bersesuaian adalah: $$ \max_{\lambda \in \mathbb{R}^m} -\frac{1}{2} (c + A^\top \lambda)^\top Q^{-1} (c + A^\top \lambda) - \lambda^\top b \quad \text{tunduk pada} \quad \lambda \ge 0 $$
+Ini adalah kasus di mana fungsi objektif adalah fungsi kuadratik cembung dan kendalanya adalah afin (linear). Bentuk primal dari QP adalah: $$ \min_{x \in \mathbb{R}^d} \frac{1}{2} x^\top Qx + c^\top x \quad \text{dengan} \quad Ax \le b $$di mana matriks $Q$ adalah simetris dan positif definit, yang memastikan fungsi objektifnya cembung. Masalah dual yang bersesuaian adalah: $$ \max_{\lambda \in \mathbb{R}^m} -\frac{1}{2} (c + A^\top \lambda)^\top Q^{-1} (c + A^\top \lambda) - \lambda^\top b \quad \text{dengan} \quad \lambda \ge 0 $$
 ## 7.3.2 Konjugat Cembung (Convex Conjugate)
 Konjugat cembung, atau dikenal juga sebagai _transformasi Legendre-Fenchel_, adalah cara lain untuk memahami dualitas dalam optimisasi cembung. Secara intuitif, transformasi ini mendeskripsikan ulang sebuah fungsi cembung bukan berdasarkan titik-titiknya $(x, f(x))$, melainkan berdasarkan hiperbidang penyokongnya (garis singgung).
 
-Definisi formal dari konjugat cembung untuk fungsi $f: \mathbb{R}^D \to \mathbb{R}$ adalah fungsi $f^\star$ yang didefinisikan sebagai: $$ f^*(s) = \sup_{x \in \mathbb{R}^D} (\langle s, x \rangle - f(x)) $$ Di sini, $s$ dapat dianggap sebagai gradien atau "kemiringan" dari hiperbidang penyokong. Untuk fungsi cembung, menerapkan transformasi konjugat dua kali akan mengembalikan fungsi aslinya. Alat ini sangat berguna untuk menurunkan masalah dual, terutama dalam konteks machine learning.
+Definisi formal dari konjugat cembung untuk fungsi $f: \mathbb{R}^D \to \mathbb{R}$ adalah fungsi $f^\star$ yang didefinisikan sebagai: $$ f^*(s) = \sup_{x \in \mathbb{R}^D} (\langle s, x \rangle - f(x)) $$Di sini, $s$ dapat dianggap sebagai gradien atau "kemiringan" dari hiperbidang penyokong. Untuk fungsi cembung, menerapkan transformasi konjugat dua kali akan mengembalikan fungsi aslinya. Alat ini sangat berguna untuk menurunkan masalah dual, terutama dalam konteks machine learning.
